@@ -153,3 +153,30 @@ class GeckoDBServer:
         for key, value in pairs.items():
             self.handle_set(key, value)
         return 'OK'
+
+
+
+def main():
+    """
+    Main function to start the GeckoDB server.
+
+    This function initializes the GeckoDBServer, creates a StreamServer,
+    and starts listening for client connections.
+    """
+    # Create an instance of GeckoDBServer
+    server = GeckoDBServer()
+
+    # Create a StreamServer that listens on localhost:6379
+    # The second argument is the callback function to handle client connections
+    stream_server = StreamServer(('localhost', 6379), server.handle_client)
+
+    # Print a message indicating the server has started
+    print('GeckoDB server started on localhost:6379')
+
+    # Start the server and run indefinitely
+    stream_server.serve_forever()
+
+
+if __name__ == "__main__":
+    # Execute the main function if this script is run directly
+    main()
