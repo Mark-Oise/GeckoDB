@@ -41,12 +41,12 @@ There are multiple ways to run the GeckoDB server:
 
 2. As a Python module:
    ```bash
-   python -m geckodb
+   python -m geckodb.server
    ```
 
-3. Running the `__main__.py` file directly:
+3. Running the `server.py` file directly:
    ```bash
-   python geckodb/__main__.py
+   python geckodb/server.py
    ```
 
 The server will start on localhost:6380 by default.
@@ -80,7 +80,6 @@ geckodb/
 │
 ├── geckodb/
 │   ├── __init__.py
-│   ├── __main__.py
 │   ├── server.py
 │   ├── data_types.py
 │   └── protocol.py
