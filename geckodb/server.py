@@ -1,8 +1,8 @@
 import gevent
 from gevent import socket
 from gevent.server import StreamServer
-from .data_types import GeckoDBString, GeckoDBNumber, GeckoDBNull, GeckoDBArray, GeckoDBDict
-from .protocol import encode_message, decode_message
+from geckodb.data_types import GeckoDBString, GeckoDBNumber, GeckoDBNull, GeckoDBArray, GeckoDBDictionary
+from geckodb.protocol import encode_message, decode_message
 
 
 class GeckoDBServer:
@@ -159,7 +159,6 @@ class GeckoDBServer:
         return 'OK'
 
 
-
 def main():
     """
     Main function to start the GeckoDB server.
@@ -172,10 +171,10 @@ def main():
 
     # Create a StreamServer that listens on localhost:6379
     # The second argument is the callback function to handle client connections
-    stream_server = StreamServer(('localhost', 6379), server.handle_client)
+    stream_server = StreamServer(('localhost', 6380), server.handle_client)
 
     # Print a message indicating the server has started
-    print('GeckoDB server started on localhost:6379')
+    print('GeckoDB server started on localhost:6380')
 
     # Start the server and run indefinitely
     stream_server.serve_forever()
