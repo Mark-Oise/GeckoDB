@@ -34,9 +34,35 @@ class GeckoDBServer:
                 break
             try:
                 command = decode_message(line.strip())
-                result = self.handel_command(command)
-                fileobj.write(encode_message)
+                result = self.handle_command(command)
+                fileobj.write(encode_message(result) + '\n')
+                fileobj.flush()
 
-            # TODO: Implement request handling logic here
-            # This loop will process client requests until the connection is closed
-            pass
+            except Exception as e:
+                fileobj.write(encode_message(f"ERROR: {str(e)}") + '\n')
+                fileobj.flush()
+
+    def handle_command(self, command):
+        """
+        Handle a command received from the client.
+
+        Args:
+            command (dict): The command received from the client.
+
+        This method processes the command and performs the corresponding action.
+        """
+        cmd = command['command'].upper()
+        if cmd == 'GET':
+            return self.handle_get(command['key'])
+        elif cmd == 'SET':
+            return self.handle_set(command['key'], command['value'])
+        elif cmd == 'DELETE':
+            return self.handle_delete(command['key'])
+        elif cmd == 'FLUSH':
+            return self.handle_flush()
+        elif cmd == 'MGET':
+            return self.handle_mget(command['keys'])
+        elif cmd == 'MSET':
+            return self.handle_mset(command['pairs'])
+        else:
+            raise ValueError(f'Unknown command: {cmd}')
