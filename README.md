@@ -15,7 +15,7 @@ GeckoDB is a lightweight, Redis-like key-value store implemented in Python using
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/geckodb.git
+   git clone https://github.com/TheTiredOne22/GeckoDB.git
    cd geckodb
    ```
 
