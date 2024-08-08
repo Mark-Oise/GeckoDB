@@ -1,0 +1,5 @@
+-e git+https://github.com/TheTiredOne22/GeckoDB.git@469ac47b3e8f898ee4a225e14ab89d119b0b1501#egg=geckodb
+gevent==21.12.0
+greenlet==1.1.3.post0
+zope.event==5.0
+zope.interface==6.4.post2
